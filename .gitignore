@@ -1,0 +1,54 @@
+# Not shareable folders/junk
+.vs/
+bin/
+obj/
+*.cfg
+.vscode/
+.idea/
+
+# Project files
+Makefile
+*.make
+*.vcxproj
+*.vcxproj.*
+*.sln
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Exclude folders
+!vendor/
+!vendor/premake5/*.exe
+!libs/**/*.dll
+!libs/**/*.a
+!libs/**/*.lib
