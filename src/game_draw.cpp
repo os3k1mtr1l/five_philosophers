@@ -2,43 +2,22 @@
 #include<imgui.h>
 #include<rlImGui.h>
 
-void Game::drawScene() const
+void Game::drawScene()
 {
     BeginTextureMode(m_scene);
     {
-        ClearBackground(BLACK);
+        ClearBackground(WHITE);
 
-        int fontSize = 40;
-        int width = MeasureText("2D Template", fontSize);
-
-        static int framesCounter = 0;
-        float dt = GetFrameTime() * 10;
-        if(framesCounter * dt > 360) framesCounter = 0;
-
-        Color color = ColorFromHSV(static_cast<float>(framesCounter) * dt, 1.0f, 1.0f);
-
-        DrawText(
-            "2D Template",
-            ConfigManager::GetConfig().windowWidth / 2 - width / 2,
-            ConfigManager::GetConfig().windowHeight / 2 - fontSize / 2,
-            fontSize,
-            color);
-        framesCounter++;
-
-        DrawFPS(10, 10);
+        m_diningroom.Draw();
     }
     EndTextureMode();
 }
 
-void Game::composeFrame() const
+void Game::composeFrame()
 {
     BeginDrawing();
     rlImGuiBegin();
     {
-        ImGui::Begin("Test");
-        ImGui::Text("Lorem Ipsum");
-        ImGui::End();
-        
         ClearBackground(BLACK);
         
         DrawTextureRec(
@@ -51,7 +30,7 @@ void Game::composeFrame() const
     EndDrawing();
 }
 
-void Game::draw() const
+void Game::draw()
 {
     drawScene();
     

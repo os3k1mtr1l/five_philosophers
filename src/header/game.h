@@ -1,6 +1,7 @@
 #pragma once
 #include<raylib.h>
 #include"config.h"
+#include"dining_room.h"
 
 class Game
 {
@@ -14,10 +15,11 @@ class Game
         void initGameAttributes();
 
         void update();
-        void draw() const;
+        void draw();
 
-        void drawScene() const;
-        void composeFrame() const;
+        void drawScene();
+        void composeFrame();
 
         RenderTexture2D m_scene;
+        DiningRoom m_diningroom;
 };

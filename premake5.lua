@@ -1,4 +1,4 @@
-workspace "2D_Template"
+workspace "Five_philosophers"
     filename "main"
     configurations { "Debug", "Release" }
     platforms { "Win64" }
@@ -6,7 +6,7 @@ workspace "2D_Template"
 project "ImGui"
     kind "StaticLib"
     language "C++"
-    cppdialect "C++17"
+    cppdialect "C++20"
 
     includedirs {
         "third_party/libs/includes/imgui",
@@ -29,14 +29,15 @@ project "ImGui"
         runtime "Release"
         optimize "On"
 
-project "2D_Template"
+project "Five_philosophers"
     kind "ConsoleApp"
     language "C++"
-    cppdialect "C++17"
+    cppdialect "C++20"
     architecture "x86_64"
     
     targetdir "bin/%{cfg.buildcfg}"
     objdir "obj/%{cfg.buildcfg}"
+    debugdir "%{cfg.targetdir}"
 
     files { "src/header/*.h", "src/*.cpp" }
     links { "raylib", "gdi32", "winmm", "opengl32", "ImGui" }

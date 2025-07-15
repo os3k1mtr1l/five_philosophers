@@ -1,11 +1,11 @@
-# 2D Template
+# Five_philosophers
 
-A simple template for creating **2D games or applications** using [Raylib](https://github.com/raysan5/raylib).
+Graphical visualisation to five dining philosophers synchronization problem.
 
 ## Requirements
 
 This project is designed **exclusively for Windows (64-bit)** and supports **MinGW (GCC)** and **MSVC (Visual Studio)** compilers.  
-It primarily uses the **C++17** standard.
+It primarily uses the **C++20** standard.
 
 ## Clone
 
@@ -13,7 +13,7 @@ This repository uses a submodule that contains all third-party dependencies requ
 
 To clone the repository with submodules, use:
 ```bash
-git clone --recurse-submodules https://github.com/os3k1mtr1l/2d_template
+git clone --recurse-submodules https://github.com/os3k1mtr1l/five_philosophers
 ```
 
 If you already cloned the repository without the --recurse-submodules flag, run the following inside the project directory:

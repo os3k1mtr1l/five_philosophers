@@ -10,6 +10,10 @@ struct Config
     uint16_t windowHeight;
     uint8_t fps;
     bool fullscreen;
+
+    uint8_t philosophers_count;
+    uint64_t eating_phase_time_ms;
+    uint64_t thinking_phase_time_ms;
 };
 
 #pragma pack(pop)

@@ -15,6 +15,10 @@ void ConfigManager::LoadConfig()
     s_config.windowHeight = 600;
     s_config.fps = 60;
     s_config.fullscreen = false;
+    s_config.philosophers_count = 5;
+    s_config.thinking_phase_time_ms = 1500;
+    s_config.eating_phase_time_ms = 2500;
+
     s_is_initialized = true;
 }
 
@@ -40,10 +44,13 @@ void ConfigManager::SaveConfig(const std::filesystem::path& path)
     }
     
     json j;
-    j["window"]["width"] = s_config.windowWidth;
-    j["window"]["height"] = s_config.windowHeight;
-    j["window"]["fps"] = s_config.fps;
-    j["window"]["fullscreen"] = s_config.fullscreen;
+    j["window"]["width"]                        = s_config.windowWidth;
+    j["window"]["height"]                       = s_config.windowHeight;
+    j["window"]["fps"]                          = s_config.fps;
+    j["window"]["fullscreen"]                   = s_config.fullscreen;
+    j["philosophers"]["count"]                  = s_config.philosophers_count;
+    j["philosophers"]["thinking_phase_time_ms"] = s_config.thinking_phase_time_ms;
+    j["philosophers"]["eating_phase_time_ms"]   = s_config.eating_phase_time_ms;
 
     file << j.dump(4);
     
@@ -71,22 +78,32 @@ void ConfigManager::LoadConfig(const std::filesystem::path& path)
         json j;
         file >> j;
         
-        s_config.windowWidth = j["window"].value("width", s_config.windowWidth);
-        s_config.windowHeight  = j["window"].value("height", s_config.windowHeight);
-        s_config.fps          = j["window"].value("fps", s_config.fps);
-        s_config.fullscreen   = j["window"].value("fullscreen", s_config.fullscreen);
+        s_config.windowWidth              = j["window"].value("width", s_config.windowWidth);
+        s_config.windowHeight             = j["window"].value("height", s_config.windowHeight);
+        s_config.fps                      = j["window"].value("fps", s_config.fps);
+        s_config.fullscreen               = j["window"].value("fullscreen", s_config.fullscreen);
+        s_config.philosophers_count       = j["philosophers"].value("count", s_config.philosophers_count);        
+        s_config.thinking_phase_time_ms   = j["philosophers"].value("thinking_phase_time_ms", s_config.thinking_phase_time_ms);        
+        s_config.eating_phase_time_ms     = j["philosophers"].value("eating_phase_time_ms", s_config.eating_phase_time_ms);        
     }
     
-    TraceLog(LOG_INFO, "CONFIG: Loaded config:\n" \
-                "\tWIDTH: %d\n"\
-                "\tHEIGHT: %d\n"\
-                "\tFPS: %d\n"\
-                "\tFULLSCREEN: %s"\
-                ,
-                s_config.windowWidth,
-                s_config.windowHeight,
-                s_config.fps,
-                s_config.fullscreen? "true" : "false"
-            );
+    TraceLog(
+        LOG_INFO, "CONFIG: Loaded config:\n" \
+        "\tWIDTH: %d\n"\
+        "\tHEIGHT: %d\n"\
+        "\tFPS: %d\n"\
+        "\tFULLSCREEN: %s\n"\
+        "\tPHILOSOPHERS_COUNT: %d\n"\
+        "\tTHINKING TIME MS: %d\n"\
+        "\tEATING TIME MS: %d"\
+        ,
+        s_config.windowWidth,
+        s_config.windowHeight,
+        s_config.fps,
+        s_config.fullscreen? "true" : "false",
+        s_config.philosophers_count,
+        s_config.thinking_phase_time_ms,
+        s_config.eating_phase_time_ms
+    );
     file.close();
 }

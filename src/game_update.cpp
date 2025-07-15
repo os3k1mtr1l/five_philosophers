@@ -2,5 +2,5 @@
 
 void Game::update()
 {
-    
+    m_diningroom.Update();
 }
