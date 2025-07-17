@@ -118,7 +118,7 @@ void DiningRoom::Draw()
             TextFormat("%s", state_names[(int)m_philosophers[i].state]),
             new_point.x + m_sub_radius,
             new_point.y + m_sub_radius,
-            5,
+            8,
             BLACK
         );
     }
