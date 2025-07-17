@@ -2,6 +2,13 @@
 
 Graphical visualisation to five dining philosophers synchronization problem.
 
+Preview:
+![preview](/github/preview.gif)
+
+Once program being executed the configuration file will appear in the same directory with default parameters. Use it for experementing with adjusting timings between two states (`Thinking` and `Eating`) and how many could there be.
+
+Feel free to try implementing your own synchronization mechanism in `dining_room.cpp` and `dining_room.h`.
+
 ## Requirements
 
 This project is designed **exclusively for Windows (64-bit)** and supports **MinGW (GCC)** and **MSVC (Visual Studio)** compilers.  
